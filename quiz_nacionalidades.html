@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Nacionalidades en Italiano</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/197/197626.png">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #ece9e6, #ffffff);
+      padding: 30px;
+      margin: 0;
+    }
+    .app-container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 30px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .question {
+      margin-bottom: 25px;
+    }
+    .options label {
+      display: block;
+      background: #f2f2f2;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .options label:hover {
+      background: #d0e6ff;
+    }
+    button {
+      display: block;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 20px auto;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .result {
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: #27ae60;
+      margin-top: 20px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <h1>Quiz: Nacionalidades en Italiano</h1>
+    <form id="quiz-form">
+      <div class="question">
+        <p>1. ¿Cómo se dice “alemana” en italiano?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="A"> A) tedesco</label>
+          <label><input type="radio" name="q1" value="B"> B) tedesca</label>
+          <label><input type="radio" name="q1" value="C"> C) germanese</label>
+          <label><input type="radio" name="q1" value="D"> D) almania</label>
+        </div>
+      </div>
+      <div class="question">
+        <p>2. ¿Cuál es la forma masculina de “inglesa” en italiano?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="A"> A) inglese</label>
+          <label><input type="radio" name="q2" value="B"> B) ingleso</label>
+          <label><input type="radio" name="q2" value="C"> C) inglando</label>
+          <label><input type="radio" name="q2" value="D"> D) inglesiano</label>
+        </div>
+      </div>
+      <div class="question">
+        <p>3. ¿Cómo se dice “estadounidense” en italiano?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="A"> A) americanese</label>
+          <label><input type="radio" name="q3" value="B"> B) statunitense</label>
+          <label><input type="radio" name="q3" value="C"> C) statunitaliano</label>
+          <label><input type="radio" name="q3" value="D"> D) americano solamente</label>
+        </div>
+      </div>
+      <div class="question">
+        <p>4. ¿Cómo se dice “francesa” en italiano?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="A"> A) francana</label>
+          <label><input type="radio" name="q4" value="B"> B) francesa</label>
+          <label><input type="radio" name="q4" value="C"> C) francese</label>
+          <label><input type="radio" name="q4" value="D"> D) francona</label>
+        </div>
+      </div>
+      <div class="question">
+        <p>5. ¿Cómo se dice “japonés” y “japonesa” en italiano?</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="A"> A) giapponese / giapponesa</label>
+          <label><input type="radio" name="q5" value="B"> B) giapponese / giapponese</label>
+          <label><input type="radio" name="q5" value="C"> C) japonico / japonica</label>
+          <label><input type="radio" name="q5" value="D"> D) giaponese / giaponesa</label>
+        </div>
+      </div>
+      <button type="button" onclick="checkAnswers()">Enviar respuestas</button>
+    </form>
+    <div id="result" class="result"></div>
+  </div>
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'B',
+        q2: 'A',
+        q3: 'B',
+        q4: 'C',
+        q5: 'B'
+      };
+      let score = 0;
+      for (let key in answers) {
+        const radios = document.getElementsByName(key);
+        for (let i = 0; i < radios.length; i++) {
+          if (radios[i].checked && radios[i].value === answers[key]) {
+            score++;
+            break;
+          }
+        }
+      }
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = `Obtuviste ${score} de 5 respuestas correctas.`;
+    }
+  </script>
+</body>
+</html>
